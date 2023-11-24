@@ -5,25 +5,27 @@
 <!-- ======= Hero Section ======= -->
 <div class="container" data-aos="zoom-in" data-aos-delay="100">
     <h3>NTPC Project meet 2023 | Registration</h3>
-    <div style="width: 70%">
-        <p>Hello {{invitee.first_name}} {{invitee.last_name}}, Please enter your travel plan</p>
-        <form action="invited" method="post">
-            {% csrf_token %}
-            <div class="row">
-                <div class="col">Date of arrival at Delhi</div>
-                <div class="col">
-                    <input class="form-control" type="date" name="arrival_date" required>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <p>Hello {{invitee.first_name}} {{invitee.last_name}}, Please enter your travel plan</p>
+            <form action="invited" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">Date of arrival at Delhi</div>
+                    <div class="col">
+                        <input class="form-control" type="date" name="arrival_date" required>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">Date of departure from Delhi</div>
-                <div class="col">
-                    <input class="form-control" type="date" name="departure_date" required>
+                <div class="row">
+                    <div class="col">Date of departure from Delhi</div>
+                    <div class="col">
+                        <input class="form-control" type="date" name="departure_date" required>
+                    </div>
                 </div>
-            </div>
-            <input type="email" hidden value="{{invitee.email}}" name="email">
-            <button class="form-control">Submit</button>
-        </form>
+                <input type="email" hidden value="{{invitee.email}}" name="email">
+                <button class="form-control">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
