@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block hero %}
+<!-- ======= Hero Section ======= -->
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3>NTPC Project meet 2023 | Registration</h3>
+    <p>{{registered.invitee}}, You have successfully Registered</p>
+    <p>Arrival : {{registered.arrival_date}} </p>
+    <p>Departure : {{registered.departure_date}}</p>
+    <p>Please note that the CMD and Directors will arrive at Saraswati hall, PMI at 9:30 AM on 29th November</p>
+    <p>You are requested to be at the venue atleast by 9:15 AM</p>
+</div>
+{% endblock %}

@@ -16,11 +16,11 @@ class Invitee(models.Model):
 
 class Registration(models.Model):
     """Model representing a registration."""
-    invitee = models.ForeignKey('Invitee', on_delete=models.SET_NULL, null=True, blank=True)
+    invitee = models.ForeignKey('Invitee', on_delete=models.CASCADE)
     registration_date = models.DateField(null=True, blank=True, auto_now_add=True)
     arrival_date = models.DateField(null=True, blank=True)
     departure_date = models.DateField(null=True, blank=True)
-    arrival_at_site = models.DateTimeField(null=True, blank=True)
+    arrival_at_venue = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         """String for representing the Model object."""
@@ -28,7 +28,7 @@ class Registration(models.Model):
 
 class Memento(models.Model):
     """Model representing a memento."""
-    registration = models.ForeignKey('Registration', on_delete=models.SET_NULL, null=True, blank=True)
+    registration = models.ForeignKey('Registration', on_delete=models.CASCADE)
     tag_generated = models.BooleanField(default=False)
     tag_printed = models.BooleanField(default=False)
     tag_collected = models.BooleanField(default=False)

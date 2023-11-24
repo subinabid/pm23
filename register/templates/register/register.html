@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block hero %}
+<!-- ======= Hero Section ======= -->
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3>NTPC Project meet 2023 | Registration</h3>
+    <div style="width: 70%;">
+        <form action="email" method="post">
+            {% csrf_token %}
+            <input class="form-control" type="email" name="email" required>
+            <button class="form-control">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
