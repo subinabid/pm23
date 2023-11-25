@@ -1,3 +1,4 @@
-users.txt
+__pycache__/
 staticfiles/
+users.txt
 db.sqlite3

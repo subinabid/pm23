@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% load tz %}
+
+{% block hero %}
+<!-- ======= Hero Section ======= -->
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3>NTPC Project meet 2023 | Reception</h3>
+    <p>{{registered.invitee}}, Arrived at Venue</p>
+    <p>At {{registered.arrival_at_venue|timezone:"Asia/Kolkata"}} </p>
+    <div class="row">
+        <div class="col-4">
+            <a href="{% url 'venue_undo' registered.id  %}">
+                <button class="form-control">Undo</button>
+            </a>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
