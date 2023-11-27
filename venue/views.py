@@ -1,12 +1,16 @@
 """Views for the venue app."""
+from datetime import datetime
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, HttpResponse
 from register.models import Registration
-from datetime import datetime
 
+@login_required(login_url="/admin/login/")
 def venue(request):
     """A view that displays the venue page."""
     return render(request, 'venue/venue.html')
 
+
+@login_required(login_url="/admin/login/")
 def receive(request):
     """A view that displays the venue email page."""
     if request.method == 'POST':
@@ -29,6 +33,8 @@ def receive(request):
     
     return HttpResponse("Invalid call")
 
+
+@login_required(login_url="/admin/login/")
 def undo(request, id):
     """A view that undoes the arrival at venue."""
     try:
@@ -39,6 +45,8 @@ def undo(request, id):
     except Registration.DoesNotExist:
         return HttpResponse("Invalid call")
     
+
+@login_required(login_url="/admin/login/")
 def search(request):
     """A view that searches for a status."""
     if request.method == 'POST':
