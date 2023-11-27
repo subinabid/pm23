@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load tz %}
+
+{% block hero %}
+<!-- ======= Hero Section ======= -->
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3>NTPC Project meet 2023 | Reports</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Detail</th>
+                <th scope="col">Invited</th>
+                <th scope="col">Self Registered</th>
+                <th scope="col">Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Invitation</td>
+                <td>{{invited}}</td>
+                <td>{{invited_self}}</td>
+                <td>{{invited_total}}</td>
+            </tr>
+            <tr>
+                <td>Registered</td>
+                <td>{{registered_inv}}</td>
+                <td>{{registered_self}}</td>
+                <td>{{registered_all}}</td>
+            </tr>
+
+            <tr>
+                <td>Arrived</td>
+                <td>{{arrived_inv}}</td>
+                <td>{{arrived_self}}</td>
+                <td>{{arrived_all}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}

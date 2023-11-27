@@ -2,7 +2,7 @@
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, HttpResponse
-from register.models import Registration
+from register.models import Registration, Invitee
 
 @login_required(login_url="/admin/login/")
 def venue(request):
@@ -66,3 +66,19 @@ def search(request):
             return HttpResponse("Not registered")
     
     return HttpResponse("Invalid call")
+
+@login_required(login_url="/admin/login/")
+def reports(request):
+    """A view that displays the venue reports page."""
+    context = {
+        'invited': Invitee.objects.filter(invited=True).count(),
+        'invited_self': Invitee.objects.filter(invited=False).count(),
+        'invited_total': Invitee.objects.all().count(),
+        'registered_inv': Registration.objects.filter(invitee__invited=True).count(),
+        'registered_self': Registration.objects.filter(invitee__invited=False).count(),
+        'registered_all': Registration.objects.all().count(),
+        'arrived_inv': Registration.objects.filter(invitee__invited=True, arrival_at_venue__isnull=False).count(),
+        'arrived_self': Registration.objects.filter(invitee__invited=False, arrival_at_venue__isnull=False).count(),
+        'arrived_all': Registration.objects.filter(arrival_at_venue__isnull=False).count(),
+    }
+    return render(request, 'venue/reports.html', context)
