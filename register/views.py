@@ -40,6 +40,10 @@ def new(request):
         location = request.POST.get('location')
         arrival_date = request.POST.get('arrival_date')
         departure_date = request.POST.get('departure_date')
+
+        if departure_date < arrival_date:
+            return HttpResponse("Invalid dates")
+        
         # Add to invitees list with invited=False
         invitee = Invitee(
             email=email, 
@@ -68,6 +72,9 @@ def invited(request):
         arrival_date = request.POST.get('arrival_date')
         departure_date = request.POST.get('departure_date')
 
+        if departure_date < arrival_date:
+            return HttpResponse("Invalid dates")
+        
         # Add to registrations list
         reg = Registration(
             invitee=Invitee.objects.get(email__iexact = request.POST.get('email').lower()), 
