@@ -14,13 +14,13 @@ def venue(request):
 def receive(request):
     """A view that displays the venue email page."""
     if request.method == 'POST':
-        email = request.POST['email']
+        email = request.POST['email'].lower()
         if not "@" in email:
             email = email + "@ntpc.co.in"
 
         # Check if the user is registered
         try:
-            reg = Registration.objects.get(invitee__email=email)
+            reg = Registration.objects.get(invitee__email__iexact=email)
             if reg.arrival_at_venue:
                 pass
             else:
@@ -50,13 +50,13 @@ def undo(request, id):
 def search(request):
     """A view that searches for a status."""
     if request.method == 'POST':
-        email = request.POST['email']
+        email = request.POST['email'].lower()
         if not "@" in email:
             email = email + "@ntpc.co.in"
 
         # Get the status
         try:
-            reg = Registration.objects.get(invitee__email=email)
+            reg = Registration.objects.get(invitee__email__iexact = email)
             if reg.arrival_at_venue:
                 return HttpResponse("Arrived")
             else:

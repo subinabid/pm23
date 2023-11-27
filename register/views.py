@@ -11,16 +11,16 @@ def register(request):
 def email(request):
     """Check if the email is valid."""
     if request.method == 'POST':
-        email = request.POST.get('email')
+        email = request.POST.get('email').lower()
         try: 
             # registered = True
-            reg =  Registration.objects.get(invitee__email=email)
+            reg =  Registration.objects.get(invitee__email__iexact = email)
             return redirect('register_view', id=reg.id)  
 
         except Registration.DoesNotExist:
             # registered = False, invited = True
             try:
-                invitee = Invitee.objects.get(email=email)
+                invitee = Invitee.objects.get(email__iexact = email)
                 return render(request, 'register/invited.html', {'invitee': invitee})
 
             except Invitee.DoesNotExist:
@@ -33,7 +33,7 @@ def email(request):
 def new(request):
     """Create a new registration."""
     if request.method == 'POST':
-        email = request.POST.get('email')
+        email = request.POST.get('email').lower()
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         designation = request.POST.get('designation')
@@ -70,7 +70,7 @@ def invited(request):
 
         # Add to registrations list
         reg = Registration(
-            invitee=Invitee.objects.get(email=request.POST.get('email')), 
+            invitee=Invitee.objects.get(email__iexact = request.POST.get('email').lower()), 
             arrival_date=arrival_date, 
             departure_date=departure_date
         )
