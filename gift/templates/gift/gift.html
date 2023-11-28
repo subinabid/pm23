@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block hero %}
+<!-- ======= Hero Section ======= -->
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3>NTPC Project meet 2023 | Gift</h3>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <form method="post">
+                {% csrf_token %}
+                <label for="email">Registered Email</label>
+                <input class="form-control" type="text" name="email" placeholder="@ntpc.co.in is not required for NTPC users" required>
+                <button class="form-control" formaction="search">Search</button>
+                <button class="form-control" formaction="issue">Issue</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
