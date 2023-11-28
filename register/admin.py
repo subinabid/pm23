@@ -2,8 +2,8 @@ from django.contrib import admin
 from .models import Invitee, Registration, Memento
 
 class InviteeAdmin(admin.ModelAdmin):
-    list_display = ('email', 'first_name', 'last_name', 'designation', 'project', 'invited', 'spot_registered')
-    list_filter = ('invited', 'spot_registered')
+    list_display = ('email', 'first_name', 'last_name', 'designation', 'project', 'invited', 'spot_registered', 'pm_dept', 'vendor')
+    list_filter = ('invited', 'spot_registered', 'pm_dept', 'vendor')
     search_fields = ('email', 'first_name', 'last_name')    
 
 class RegistrationAdmin(admin.ModelAdmin):

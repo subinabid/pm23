@@ -9,6 +9,10 @@ class Invitee(models.Model):
     project = models.CharField(max_length=40)
     invited = models.BooleanField(default=True)
     spot_registered = models.BooleanField(default=False)
+    pm_dept = models.BooleanField(default=False)
+    vendor = models.BooleanField(default=False)
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    employee_id = models.CharField(max_length=10, null=True, blank=True)
 
     def __str__(self):
         """String for representing the Model object."""
