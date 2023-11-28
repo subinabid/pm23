@@ -10,7 +10,7 @@ def search(request):
     if request.method == 'POST':
         email = request.POST.get('email').lower()
         try:
-            invitee = Invitee.objects.get(email=email)
+            invitee = Invitee.objects.get(email__iexact=email)
             return HttpResponse("Invitee found!")
 
         except Invitee.DoesNotExist:
@@ -23,7 +23,7 @@ def add(request):
     if request.method == 'POST':
         email = request.POST.get('email').lower()
         try:
-            invitee = Invitee.objects.get(email=email)
+            invitee = Invitee.objects.get(email__iexact=email)
             return HttpResponse("Invitee already exists!")
 
         except Invitee.DoesNotExist:
@@ -36,12 +36,12 @@ def save(request):
     """Save a new invitee"""
     if request.method == 'POST':
         email = request.POST.get('email').lower()
-        first_name = request.POST.get('first_name').lower()
-        last_name = request.POST.get('last_name').lower()
-        designation = request.POST.get('designation').lower()
-        project = request.POST.get('project').lower()
-        phone = request.POST.get('phone').lower()
-        employee_id = request.POST.get('employee_id').lower()
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        designation = request.POST.get('designation')
+        project = request.POST.get('project')
+        phone = request.POST.get('phone')
+        employee_id = request.POST.get('employee_id')
         # Add
         invitee = Invitee(email=email, first_name=first_name, last_name=last_name, designation=designation, project=project, phone=phone, employee_id=employee_id, invited=True, spot_registered=False)
         invitee.save()
