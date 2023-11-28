@@ -16,7 +16,7 @@ class Invitee(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.email}'
 
 class Registration(models.Model):
     """Model representing a registration."""
@@ -38,3 +38,7 @@ class Memento(models.Model):
     tag_collected = models.BooleanField(default=False)
     issued_to = models.CharField(max_length=100, null=True, blank=True)
     issued_by = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.registration}'
