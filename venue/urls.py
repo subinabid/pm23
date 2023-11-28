@@ -9,5 +9,6 @@ urlpatterns = [
     path('undo/<id>', views.undo, name='venue_undo'),
     path('search', views.search, name='venue_search'),
     path('reports', views.reports, name='reports'),
-    path('report1', views.report1, name='report1')
+    path('report1', views.report1, name='report1'),
+    path('report2', views.report2, name='report2')
 ]

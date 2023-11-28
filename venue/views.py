@@ -82,9 +82,22 @@ def reports(request):
     }
     return render(request, 'venue/reports.html', context)
 
+@login_required(login_url="/admin/login/")
 def report1(request):
     """Report - list of all invitees who has not registered"""
     context = {
         'invitees': Invitee.objects.filter(invited=True, registration__isnull=True).order_by('-project'),
     }
     return render(request, 'venue/report1.html', context)
+
+@login_required(login_url="/admin/login/")
+def report2(request):
+    """Report - list of all registerd guests who has not arrived """
+    context = {
+        'invitees': Invitee.objects.filter(
+            invited=True, 
+            registration__isnull=False, 
+            registration__arrival_at_venue__isnull=True
+        ).order_by('-project'),
+    }
+    return render(request, 'venue/report2.html', context)
