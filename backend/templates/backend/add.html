@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block hero %}
+<!-- ======= Hero Section ======= -->
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3>NTPC Project meet 2023 | Backend</h3>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 ">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" name="email" value="{{email}}" required readonly>
+                    </div>
+                    <div class="col-12">
+                        <label for="first_name">First Name</label>
+                        <input class="form-control" type="text" name="first_name" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="first_name">Last Name</label>
+                        <input class="form-control" type="text" name="last_name" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="first_name">designation</label>
+                        <input class="form-control" type="text" name="designation" >
+                    </div>
+                    <div class="col-12">
+                        <label for="first_name">project</label>
+                        <input class="form-control" type="text" name="project" >
+                    </div>
+                    <div class="col-12">
+                        <label for="first_name">phone</label>
+                        <input class="form-control" type="text" name="phone" >
+                    </div>
+                    <div class="col-12">
+                        <label for="first_name">employeeid</label>
+                        <input class="form-control" type="text" name="employeeid" >
+                    </div>
+                </div>
+                
+                <button class="form-control" formaction="save">save</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
