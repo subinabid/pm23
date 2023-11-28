@@ -1,0 +1,34 @@
+{% extends "base_blank.html" %}
+{% load static %}
+{% load tz %}
+
+{% block hero %}
+<!-- ======= Hero Section ======= -->
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <h3>PM23 | Report - Invited, but not registered</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sl</th>
+                <th scope="col">Name</th>
+                <th scope="col">Project</th>
+                <th scope="col">Designation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in invitees %}
+            <tr>
+                <th scope="row">{{ forloop.counter}}</th>
+                <td>{{i.first_name}} {{i.last_name}}</td>
+                <td>{{i.project}}</td>
+                <td>{{i.designation}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Reports</p>
+    <ul>
+        <li><a href="{% url 'report1' %}">Invited, but not registered</a></li>
+    </ul>
+</div>
+{% endblock %}

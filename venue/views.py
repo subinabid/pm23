@@ -67,7 +67,6 @@ def search(request):
     
     return HttpResponse("Invalid call")
 
-@login_required(login_url="/admin/login/")
 def reports(request):
     """A view that displays the venue reports page."""
     context = {
@@ -82,3 +81,10 @@ def reports(request):
         'arrived_all': Registration.objects.filter(arrival_at_venue__isnull=False).count(),
     }
     return render(request, 'venue/reports.html', context)
+
+def report1(request):
+    """Report - list of all invitees who has not registered"""
+    context = {
+        'invitees': Invitee.objects.filter(invited=True, registration__isnull=True).order_by('-project'),
+    }
+    return render(request, 'venue/report1.html', context)
